@@ -528,17 +528,19 @@ sections.forEach(section => observer.observe(section));
         gap: 8px;
     }
     .suggested-prompt-btn {
-        background: var(--card-bg);
-        color: var(--text);
-        border: 1px solid var(--border);
-        border-radius: 999px;
-        padding: 8px 14px;
-        font-size: 0.8rem;
-        cursor: pointer;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        white-space: nowrap;
-        transition: all 0.2s ease;
-    }
+    background: var(--card-bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    width: 180px;
+    white-space: normal;
+    text-align: center;
+    transition: all 0.2s ease;
+}
     .suggested-prompt-btn:hover {
         background: var(--accent);
         color: #fff;
