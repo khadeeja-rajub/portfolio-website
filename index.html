@@ -307,8 +307,6 @@
 
 <section id="experience">
     <h2>Experience</h2>
-
-    <h3 class="subsection-heading">Work Experience</h3>
     <div class="projects">
         <div class="card">
             <h3>Digitalisation Graduate at Al Baraka Bank</h3>
@@ -329,25 +327,13 @@
                 <li>Built training material for onboarding</li>
             </ul>
         </div>
-    </div>
 
-    <h3 class="subsection-heading">University Projects (UKZN)</h3>
-    <div class="projects">
         <div class="card">
             <h3>Research Assistant to Dr. MF Khan</h3>
             <p><em>Jun 2025 &ndash; Jul 2025</em></p>
             <ul>
                 <li>Detected powerline-to-tree interference using satellite imagery &amp; computer vision</li>
                 <li>Built HTML engineering tools; ran optimisation &amp; data mining studies</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h3>AI Cell Detection</h3>
-            <p><em>Final Year Engineering Project</em></p>
-            <ul>
-                <li>YOLO-based diagnostic pipeline for medical image classification</li>
-                <li>Full Python pipeline: preprocessing, inference, visualisation</li>
             </ul>
         </div>
     </div>
@@ -400,16 +386,26 @@
 </section>
 
 <section id="projects">
-    <h2>Featured Projects</h2>
-    <div class="skills-grid">
-        <div class="card">
-            <h3>Yara: Copilot Studio Chatbot</h3>
-            <p>Customer-facing agent handling queries and capturing leads/complaints into SharePoint &amp; Freshdesk.</p>
-        </div>
+    <h2>Projects</h2>
+    <div class="projects">
+        
 
         <div class="card">
-            <h3>HR Stay-Interview Automation</h3>
-            <p>Power Automate + Azure AI pipeline analysing stay-interview sentiment and themes.</p>
+            <h3>Yara: Copilot Studio Chatbot</h3>
+            <p><em>Al Baraka Bank</em></p>
+            <p>Customer-facing agent handling queries and capturing leads/complaints into SharePoint &amp; Freshdesk.</p>
+        </div>
+        
+       <div class="card">
+            <h3>Phasa AI &ndash; Bootcamp Winner</h3>
+           <p><em>Kizuri Tech Solutions</em></p>
+            <p>Originated and pitched an AI study platform that summarises notes, generates quizzes, prioritises exam topics by mark allocation, and builds a personalised study plan. Named a winning team at the Kizuri Tech Solutions Bootcamp Demo Day.</p>
+      </div>
+        
+        <div class="card">
+            <h3>AI Cell Detection</h3>
+            <p><em>Final Year Engineering Project</em></p>
+            <p>YOLO-based diagnostic pipeline for medical image classification. Full Python pipeline: preprocessing, inference, visualisation.</p>
         </div>
     </div>
 </section>
@@ -430,6 +426,11 @@
         <div class="card">
             <h3>Create &amp; Manage Automated Processes with Power Automate</h3>
             <p>Microsoft Applied Skills, Aug 2026</p>
+        </div>
+
+        <div class="card">
+            <h3>Project Management for Engineers</h3>
+            <p>Simplilearn, Sep 2026</p>
         </div>
     </div>
 </section>
@@ -543,18 +544,11 @@ sections.forEach(section => observer.observe(section));
 <script>
     customElements.whenDefined('chat-bubble-snippet').then(function () {
         document.querySelectorAll('.suggested-prompt-btn').forEach(function (btn) {
-            btn.addEventListener('click', function () {
+            btn.addEventListener('click', async function () {
                 var bubble = document.querySelector('chat-bubble-snippet');
-                if (!bubble) return;
-                if (bubble.shadowRoot) {
-                    var launcher = bubble.shadowRoot.querySelector('button');
-                    if (launcher) launcher.click();
+                if (bubble && typeof bubble.sendMessage === 'function') {
+                    await bubble.sendMessage(btn.dataset.prompt);
                 }
-                setTimeout(function () {
-                    if (typeof bubble.sendMessage === 'function') {
-                        bubble.sendMessage(btn.dataset.prompt);
-                    }
-                }, 150);
             });
         });
     });
